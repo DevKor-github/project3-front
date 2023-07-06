@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Map from './Map';
 import Nav from './Nav';
 
 function MyPage() {
+  const [center, setCenter] = useState(null);
+
+  const updateCenter = (newCenter) => {
+    setCenter(newCenter);
+  };
+
   return (
     <div>
-      <Map/>
-      <Nav/>
+      <Map center={center} updateCenter={updateCenter}/>
+      <Nav updateCenter={updateCenter}/>
     </div>
   );
 }
