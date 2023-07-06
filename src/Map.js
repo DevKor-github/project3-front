@@ -4,6 +4,9 @@ import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-map
 =======
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import MyLocation from './Nav';
+<<<<<<< HEAD
+>>>>>>> parent of afabd31 (home intial setting)
+=======
 >>>>>>> parent of afabd31 (home intial setting)
 
 
@@ -122,6 +125,7 @@ function Map() {
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
 <<<<<<< HEAD
+<<<<<<< HEAD
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
         {markers.map((marker, index) => (
           <Marker
@@ -134,6 +138,9 @@ function Map() {
             </InfoWindow>
           </Marker>
         ))}
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
 =======
         {center && customMarker && <Marker position={center} icon={customMarker} />}
 >>>>>>> parent of afabd31 (home intial setting)
