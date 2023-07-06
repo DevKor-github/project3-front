@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
+=======
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import MyLocation from './Nav';
+>>>>>>> parent of afabd31 (home intial setting)
 
 
 const containerStyle = {
@@ -7,12 +12,30 @@ const containerStyle = {
   height: '500px',
 };
 
-function Map({ center, updateCenter }) {
+function Map() {
   
-  const [localCenter, setLocalCenter] = useState(center);
+  const [center, setCenter] = useState(null);
   const [map, setMap] = useState(null);
+<<<<<<< HEAD
   const [markers, setMarkers] = useState([]);
  
+=======
+  
+  useEffect(() => {
+    // 유저 현재 위치 정보 받기
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      });
+    } else {
+      console.log("브라우저가 위치 정보를 지원하지 않습니다.");
+    }
+  }, []);
+
+>>>>>>> parent of afabd31 (home intial setting)
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyDLOzTtnOt6I8eJjfpxkvzzWNy5AHx3dVM"
@@ -71,15 +94,19 @@ function Map({ center, updateCenter }) {
   }, [center, updateCenter, localCenter, isLoaded]);
 
   const onLoad = React.useCallback(function callback(map) {
-    if(localCenter) {
-      map.setCenter(localCenter);
+    if(center) {
+      const bounds = new window.google.maps.LatLngBounds(center);
+      map.fitBounds(bounds);
     }
-  }, [localCenter]);
+    setMap(map)
+  }, [center])
 
   const onUnmount = React.useCallback(function callback(map) {
-    setLocalCenter(null)
+    setMap(null)
   }, [])
 
+
+  
   const customMarker = isLoaded ? {
     scaledSize: new window.google.maps.Size(200, 200),
   } : null;
@@ -88,12 +115,13 @@ function Map({ center, updateCenter }) {
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>    
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={localCenter}
+        center={center}
         zoom={14}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
+<<<<<<< HEAD
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
         {markers.map((marker, index) => (
           <Marker
@@ -106,6 +134,9 @@ function Map({ center, updateCenter }) {
             </InfoWindow>
           </Marker>
         ))}
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
       </GoogleMap>
     </div>
   ) : <></>
