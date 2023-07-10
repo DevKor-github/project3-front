@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
 =======
@@ -11,6 +12,9 @@ import MyLocation from './Nav';
 >>>>>>> parent of afabd31 (home intial setting)
 =======
 >>>>>>> parent of afabd31 (home intial setting)
+=======
+import { GoogleMap, useJsApiLoader, Marker , OverlayView } from '@react-google-maps/api';
+>>>>>>> Stashed changes
 
 
 const containerStyle = {
@@ -117,6 +121,31 @@ function Map() {
     scaledSize: new window.google.maps.Size(200, 200),
   } : null;
 
+  const LabeledMarker = ({ label, icon, position }) => {
+    const getPixelPositionOffset = (width, height) => ({
+      x: -(width / 2),
+      y: -(height / 2),
+    });
+  
+    return (
+      <>
+        <OverlayView
+          position={position}
+          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          getPixelPositionOffset={getPixelPositionOffset}
+        >
+          <div style={{ background: "white", border: "1px solid black", padding: "2px 4px" }}>
+            {label}
+          </div>
+        </OverlayView>
+        <Marker
+          icon={icon}
+          position={position}
+        />
+      </>
+    );
+  };
+
   return isLoaded ? (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>    
       <GoogleMap
@@ -131,6 +160,7 @@ function Map() {
 <<<<<<< HEAD
 <<<<<<< HEAD
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
+<<<<<<< Updated upstream
         {markers.map((marker, index) => (
           <Marker
             key={index}
@@ -151,6 +181,40 @@ function Map() {
 =======
         {center && customMarker && <Marker position={center} icon={customMarker} />}
 >>>>>>> parent of afabd31 (home intial setting)
+=======
+        <LabeledMarker
+    label="14"
+    icon={{
+      url : "Cafe.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.544709 , lng: 126.968892 }}
+  />
+        <LabeledMarker
+    label="83"
+    icon={{
+      url : "Restaurant.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.542305 , lng: 126.964535 }}
+  />
+        <LabeledMarker
+    label="9"
+    icon={{
+      url : "Hotel.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.582385 , lng: 127.028430 }}
+  />
+          <LabeledMarker
+    label="113"
+    icon={{
+      url : "Dessert.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.587088 , lng: 127.029423 }}
+  />
+>>>>>>> Stashed changes
       </GoogleMap>
     </div>
   ) : <></>
