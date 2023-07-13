@@ -1,21 +1,5 @@
 import React, { useEffect, useState } from 'react'
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
-=======
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import MyLocation from './Nav';
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of afabd31 (home intial setting)
-=======
->>>>>>> parent of afabd31 (home intial setting)
-=======
->>>>>>> parent of afabd31 (home intial setting)
-=======
-import { GoogleMap, useJsApiLoader, Marker , OverlayView } from '@react-google-maps/api';
->>>>>>> Stashed changes
-
+import { GoogleMap, useJsApiLoader, Marker , InfoWindow, OverlayView} from '@react-google-maps/api';
 
 const containerStyle = {
   width: '375px',
@@ -24,12 +8,13 @@ const containerStyle = {
 
 function Map() {
   
+  const [localCenter, setLocalCenter] = useState(null);
   const [center, setCenter] = useState(null);
   const [map, setMap] = useState(null);
-<<<<<<< HEAD
   const [markers, setMarkers] = useState([]);
- 
-=======
+  const updateCenter = (newCenter) => {  
+    setCenter(newCenter);
+  }
   
   useEffect(() => {
     // 유저 현재 위치 정보 받기
@@ -45,7 +30,6 @@ function Map() {
     }
   }, []);
 
->>>>>>> parent of afabd31 (home intial setting)
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyDLOzTtnOt6I8eJjfpxkvzzWNy5AHx3dVM"
@@ -156,11 +140,7 @@ function Map() {
         onUnmount={onUnmount}
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
-<<<<<<< Updated upstream
         {markers.map((marker, index) => (
           <Marker
             key={index}
@@ -172,16 +152,6 @@ function Map() {
             </InfoWindow>
           </Marker>
         ))}
-=======
-        {center && customMarker && <Marker position={center} icon={customMarker} />}
->>>>>>> parent of afabd31 (home intial setting)
-=======
-        {center && customMarker && <Marker position={center} icon={customMarker} />}
->>>>>>> parent of afabd31 (home intial setting)
-=======
-        {center && customMarker && <Marker position={center} icon={customMarker} />}
->>>>>>> parent of afabd31 (home intial setting)
-=======
         <LabeledMarker
     label="14"
     icon={{
@@ -214,7 +184,6 @@ function Map() {
     }}
     position={{ lat: 37.587088 , lng: 127.029423 }}
   />
->>>>>>> Stashed changes
       </GoogleMap>
     </div>
   ) : <></>
