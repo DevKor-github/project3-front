@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 <<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
@@ -15,6 +16,9 @@ import MyLocation from './Nav';
 =======
 >>>>>>> parent of afabd31 (home intial setting)
 >>>>>>> parent of 64b3006 (commit)
+=======
+import MyLocation from './Nav';
+>>>>>>> parent of afabd31 (home intial setting)
 
 //hello 
 
@@ -25,28 +29,26 @@ const containerStyle = {
 
 function Map() {
   
-  const [localCenter, setLocalCenter] = useState(center);
+  const [center, setCenter] = useState(null);
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const updateCenter = (newCenter) => {  
     setCenter(newCenter);
   }
   
-    useEffect(() => {
-      // 유저 현재 위치 정보 받기
-      if (center === null && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          const initialCenter = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setLocalCenter(initialCenter);
-          updateCenter(initialCenter);
+  useEffect(() => {
+    // 유저 현재 위치 정보 받기
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
         });
-      } else if(center !== localCenter){
-        setLocalCenter(center);
-      }
-    }, [center, updateCenter, localCenter]);
+      });
+    } else {
+      console.log("브라우저가 위치 정보를 지원하지 않습니다.");
+    }
+  }, []);
 
     if (isLoaded) {
       setMarkers([
@@ -114,6 +116,7 @@ function Map() {
         onUnmount={onUnmount}
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
+<<<<<<< HEAD
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
 <<<<<<< HEAD
         <Marker
@@ -166,6 +169,9 @@ function Map() {
         {center && customMarker && <Marker position={center} icon={customMarker} />}
 >>>>>>> parent of afabd31 (home intial setting)
 >>>>>>> parent of 64b3006 (commit)
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
       </GoogleMap>
     </div>
   ) : <></>
