@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 64b3006 (commit)
 <<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
 =======
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+<<<<<<< HEAD
+=======
+import MyLocation from './Nav';
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+>>>>>>> parent of afabd31 (home intial setting)
+>>>>>>> parent of 64b3006 (commit)
 
 //hello 
 
@@ -105,6 +119,7 @@ function Map() {
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
+<<<<<<< HEAD
         <Marker
       icon={{
         url : "Cafe.png",
@@ -133,6 +148,28 @@ function Map() {
       }}
       position={{ lat: 37.587088 , lng: 127.029423 }}
     />
+=======
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            position={marker.position}
+            icon={marker.icon}
+          >
+            <InfoWindow>
+              <div>{marker.number}</div>
+            </InfoWindow>
+          </Marker>
+        ))}
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
+>>>>>>> parent of 64b3006 (commit)
       </GoogleMap>
     </div>
   ) : <></>
