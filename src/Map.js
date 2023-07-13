@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 64b3006 (commit)
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
 =======
@@ -20,7 +14,9 @@ import MyLocation from './Nav';
 >>>>>>> parent of afabd31 (home intial setting)
 =======
 >>>>>>> parent of afabd31 (home intial setting)
->>>>>>> parent of 64b3006 (commit)
+=======
+import { GoogleMap, useJsApiLoader, Marker , OverlayView } from '@react-google-maps/api';
+>>>>>>> Stashed changes
 
 //hello 
 
@@ -119,36 +115,7 @@ function Map() {
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
-<<<<<<< HEAD
-        <Marker
-      icon={{
-        url : "Cafe.png",
-        scaledSize: new window.google.maps.Size(45.8, 64)
-      }}
-      position={{ lat: 37.544709 , lng: 126.968892 }}
-    />
-        <Marker
-      icon={{
-        url : "Restaurant.png",
-        scaledSize: new window.google.maps.Size(45.8, 64)
-      }}
-      position={{ lat: 37.542305 , lng: 126.964535 }}
-    />
-        <Marker
-      icon={{
-        url : "Hotel.png",
-        scaledSize: new window.google.maps.Size(45.8, 64)
-      }}
-      position={{ lat: 37.582385 , lng: 127.028430 }}
-    />
-        <Marker
-      icon={{
-        url : "Dessert.png",
-        scaledSize: new window.google.maps.Size(45.8, 64)
-      }}
-      position={{ lat: 37.587088 , lng: 127.029423 }}
-    />
-=======
+<<<<<<< Updated upstream
         {markers.map((marker, index) => (
           <Marker
             key={index}
@@ -169,7 +136,40 @@ function Map() {
 =======
         {center && customMarker && <Marker position={center} icon={customMarker} />}
 >>>>>>> parent of afabd31 (home intial setting)
->>>>>>> parent of 64b3006 (commit)
+=======
+        <LabeledMarker
+    label="14"
+    icon={{
+      url : "Cafe.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.544709 , lng: 126.968892 }}
+  />
+        <LabeledMarker
+    label="83"
+    icon={{
+      url : "Restaurant.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.542305 , lng: 126.964535 }}
+  />
+        <LabeledMarker
+    label="9"
+    icon={{
+      url : "Hotel.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.582385 , lng: 127.028430 }}
+  />
+          <LabeledMarker
+    label="113"
+    icon={{
+      url : "Dessert.png",
+      scaledSize: new window.google.maps.Size(45.8, 64)
+    }}
+    position={{ lat: 37.587088 , lng: 127.029423 }}
+  />
+>>>>>>> Stashed changes
       </GoogleMap>
     </div>
   ) : <></>
