@@ -1,5 +1,20 @@
 import React, { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+=======
+<<<<<<< HEAD
+import { GoogleMap, useJsApiLoader, Marker , InfoWindow} from '@react-google-maps/api';
+=======
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import MyLocation from './Nav';
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+>>>>>>> parent of afabd31 (home intial setting)
+>>>>>>> parent of 64b3006 (commit)
 
 //hello 
 
@@ -89,31 +104,6 @@ function Map() {
     scaledSize: new window.google.maps.Size(200, 200),
   } : null;
 
-  const LabeledMarker = ({ label, icon, position }) => {
-    const getPixelPositionOffset = (width, height) => ({
-      x: -(width / 2),
-      y: -(height / 2),
-    });
-  
-    return (
-      <>
-        <OverlayView
-          position={position}
-          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-          getPixelPositionOffset={getPixelPositionOffset}
-        >
-          <div style={{ background: "white", border: "1px solid black", padding: "2px 4px" }}>
-            {label}
-          </div>
-        </OverlayView>
-        <Marker
-          icon={icon}
-          position={position}
-        />
-      </>
-    );
-  };
-
   return isLoaded ? (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>    
       <GoogleMap
@@ -125,6 +115,7 @@ function Map() {
         options={{ streetViewControl: false, mapTypeControl: false, fullscreenControl: false }}
       >
         {localCenter && customMarker && <Marker position={localCenter} icon={customMarker} />}
+<<<<<<< HEAD
         <Marker
       icon={{
         url : "Cafe.png",
@@ -153,6 +144,28 @@ function Map() {
       }}
       position={{ lat: 37.587088 , lng: 127.029423 }}
     />
+=======
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            position={marker.position}
+            icon={marker.icon}
+          >
+            <InfoWindow>
+              <div>{marker.number}</div>
+            </InfoWindow>
+          </Marker>
+        ))}
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
+=======
+        {center && customMarker && <Marker position={center} icon={customMarker} />}
+>>>>>>> parent of afabd31 (home intial setting)
+>>>>>>> parent of 64b3006 (commit)
       </GoogleMap>
     </div>
   ) : <></>
