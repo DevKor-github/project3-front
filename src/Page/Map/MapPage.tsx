@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import Marker from './Marker';
 import CenterMarker from './CenterMarker';
+import { markers } from './MarkerManage';
 
 const containerStyle = {
   width: '390px',
@@ -50,6 +51,7 @@ const MapPage: React.FC<MapPageProps> = ({ googleMapsApiKey }) => {
     setMap(null);
   }, []);
 
+
   return isLoaded && center ? (
     <div
       style={{
@@ -71,11 +73,15 @@ const MapPage: React.FC<MapPageProps> = ({ googleMapsApiKey }) => {
           fullscreenControl: false,
         }}
       >
-        {/* Child components, such as markers, info windows, etc. */}
-        <Marker position={{ lat: 37.544424, lng: 126.968567 }} icon={{ url: "/Cafe.png" }} reviews={20} />
-        <Marker position={{ lat: 37.543536, lng: 126.957438 }} icon={{ url: "/Icecream.png" }} reviews={3} />
-        <Marker position={{ lat: 37.584305, lng: 127.021857 }} icon={{ url: "/Donut.png" }} reviews={144} />
-        <Marker position={{ lat: 37.588234, lng: 127.029899 }} icon={{ url: "/Theater.png" }} reviews={55} />
+
+        {markers.map((marker, index) => (
+        <Marker
+        key={index}
+        position={marker.position}
+        icon={marker.icon}
+        reviews={marker.reviews}
+      />
+      ))}
         <CenterMarker position={center} />
         <></>
       </GoogleMap>
